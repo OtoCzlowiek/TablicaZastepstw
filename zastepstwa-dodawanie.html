@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+<head>
+	<title>Dodawanie zastępstw w T19</title>
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="styl.css"/>
+</head>
+<body>
+
+	<content>
+		<h1>Dodaj zastępstwo na dzisiejszy dzień</h1>
+		
+		<div id="duzy-poj">
+			<div>
+				<label for="klasa">Klasa</label>
+				<input type="text" id="klasa">
+			</div>
+			<div>
+				<label for="godzina">Godzina</label>
+				<input type="text" id="godzina">
+			</div>
+			<div>
+				<label for="przedmiot">Przedmiot</label>
+				<input type="text" id="przedmiot">
+			</div>
+			<div>
+				<label for="za">Nauczyciel zastępowany</label>
+				<input type="text" id="za">
+			</div>
+			<div>
+				<label for="przez">Nauczyciel zastępujący</label>
+				<input type="text" id="przez">
+			</div>
+		</div>
+		
+		<div id="dzisiejszadata">
+			<p>Dziś jest</p>
+			<p id="dziendzis"></p>
+		</div>
+	</content>
+
+	<script>
+	var d = new Date();
+	var d_dt = d.getDay();
+	var d_mc = d.getMonth()+1;
+	var d_rok = d.getYear()+1900;
+	var d_cd = ', '+d.getDate()+'.'+d_mc+'.'+d_rok;
+	
+	if(d_dt == 1){document.getElementById('dziendzis').innerHTML = 'Poniedziałek'+d_cd;}
+	if(d_dt == 2){document.getElementById('dziendzis').innerHTML = 'Wtorek'+d_cd;}
+	if(d_dt == 3){document.getElementById('dziendzis').innerHTML = 'Środa'+d_cd;}
+	if(d_dt == 4){document.getElementById('dziendzis').innerHTML = 'Czwartek'+d_cd;}
+	if(d_dt == 5){document.getElementById('dziendzis').innerHTML = 'Piątek'+d_cd;}
+	if(d_dt == 6){document.getElementById('dziendzis').innerHTML = 'Sobota'+d_cd;}
+	if(d_dt == 7){document.getElementById('dziendzis').innerHTML = 'Niedziela'+d_cd;}
+	</script>
+</body>
+</html>

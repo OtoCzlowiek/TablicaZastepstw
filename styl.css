@@ -1,0 +1,47 @@
+/*Stylowanie obydwu*/
+body {display: flex;
+		flex-wrap: wrap;
+		margin:0;
+		padding:0;
+		justify-content:center;}
+
+.bok {width:15%;
+		height: 100vh;
+		background-color: RGB(240,255,240);
+		display: flex;
+		justify-content: center;
+		align-items: center;}
+.cien {width:5%;
+		height: 100vh;
+		background-color: RGB(0,108,157);
+		display: flex;
+		justify-content: center;
+		align-items: center;}
+content {width:60%;
+		height: 100vh;
+		background-color: RGB(66,186,236);
+		display: flex;
+		flex-direction: column;
+		align-items: center;}
+
+th, td, h1, p {font-family: 'Bahnschrift', 'Comic Sans MS', sans-serif;}
+		
+th, td {border:solid white 4px;
+		padding: 0px 10px 0px 10px;}
+
+img {width:80%;
+	height: auto;}
+
+h1 {font-size: 7vh;}
+th, td, p {font-size: 4vh;}
+p {margin-top: 0px;
+	font-weight: bold;
+	font-style: italic;}
+
+/*Stylowanie strony z formularzem dodawania*/
+#dzisiejszadata {background-color: RGB(240,255,240);
+					border: 5px RGB(0,108,157) dotted;
+					padding: 10px;}
+
+#dzisiejszadata p {font-size: 3vh;
+					margin: 2px;}
