@@ -20,48 +20,48 @@
     <article style="flex-direction: column">
         <h2 id="data">Zastępstwa na dzień:</h2>
         <form>
-            <div>
+            <div style="border-right: 2px dotted #bbb">
                 <label for="klasa">Klasa</label>
-                <input type="text" id="klasa">
+                <input type="text" id="klasa" style="width: 6vw;">
             </div>
-            <div>
-                <label for="gosc">Godziny zwolnione</label>
+            <div style="border-right: 2px dotted #bbb">
+                <label>Godziny zwolnione</label>
                 <div style="display: flex; flex-direction: row;">
-                    <a style="padding: 0px 10px;">Od</a>
-                    <select id="godzina_lekcyjna_od" style="width: 5vw;" placeholder="OD">
-                        <option value="0">0 - 07:10</option>
-                        <option value="1">1 - 8:00</option>
-                        <option value="2">2 - 8:50</option>
-                        <option value="3">3 - 9:45</option>
-                        <option value="4">4 - 10:40</option>
-                        <option value="5">5 - 11:35</option>
-                        <option value="6">6 - 12:35</option>
-                        <option value="7">7 - 13:30</option>
-                        <option value="8">8 - 14:25</option>
-                        <option value="9">9 - 15:15</option>
-                        <option value="10">10 - 16:05</option>
+                    <label for="od" style="padding: 0px 10px;">Od</label>
+                    <select id="godzina_lekcyjna_od" style="width: 6vw;">
+                        <option id="od" value="0">0 - 07:10</option>
+                        <option id="od" value="1">1 - 8:00</option>
+                        <option id="od" value="2">2 - 8:50</option>
+                        <option id="od" value="3">3 - 9:45</option>
+                        <option id="od" value="4">4 - 10:40</option>
+                        <option id="od" value="5">5 - 11:35</option>
+                        <option id="od" value="6">6 - 12:35</option>
+                        <option id="od" value="7">7 - 13:30</option>
+                        <option id="od" value="8">8 - 14:25</option>
+                        <option id="od" value="9">9 - 15:15</option>
+                        <option id="od" value="10">10 - 16:05</option>
                     </select>
-                    <a style="padding: 0px 10px;">Do</a>
-                    <select id="godzina_lekcyjna_do" style="width: 5vw;" placeholder="OD">
-                        <option value="0">0 - 07:10</option>
-                        <option value="1">1 - 8:00</option>
-                        <option value="2">2 - 8:50</option>
-                        <option value="3">3 - 9:45</option>
-                        <option value="4">4 - 10:40</option>
-                        <option value="5">5 - 11:35</option>
-                        <option value="6">6 - 12:35</option>
-                        <option value="7">7 - 13:30</option>
-                        <option value="8">8 - 14:25</option>
-                        <option value="9">9 - 15:15</option>
-                        <option value="10">10 - 16:05</option>
+                    <label for="do" style="padding: 0px 10px;">Do</label>
+                    <select id="godzina_lekcyjna_do" style="width: 6vw;">
+                        <option id="do" value="0">0 - 07:10</option>
+                        <option id="do" value="1">1 - 8:00</option>
+                        <option id="do" value="2">2 - 8:50</option>
+                        <option id="do" value="3">3 - 9:45</option>
+                        <option id="do" value="4">4 - 10:40</option>
+                        <option id="do" value="5">5 - 11:35</option>
+                        <option id="do" value="6">6 - 12:35</option>
+                        <option id="do" value="7">7 - 13:30</option>
+                        <option id="do" value="8">8 - 14:25</option>
+                        <option id="do" value="9">9 - 15:15</option>
+                        <option id="do" value="10">10 - 16:05</option>
                     </select>
                 </div>
             </div>
-            <div>
+            <div style="border-right: 2px dotted #bbb">
                 <label for="przedmiot">Przedmiot</label>
                 <input type="text" id="przedmiot">
             </div>
-            <div>
+            <div style="border-right: 2px dotted #bbb">
                 <label for="zastepstwo_za">Zastępstwo za</label>
                 <input type="text" id="zastepstwo_za">
             </div>
@@ -70,7 +70,7 @@
                 <input type="text" id="zastepujacy">
             </div>
         </form>
-        <button onclick="aktualizuj_date()" style="margin-top: 20px; padding:10px;">Dodaj Zastępstwo</button>
+        <button onclick="dodaj_rekord()" style="margin-top: 20px; padding:10px;">Dodaj Zastępstwo</button>
         <p id="status"></p>
     </article>
     <section>
@@ -93,6 +93,28 @@
             document.getElementById("data").innerHTML = "Zastępstwa na dzień: " + data_DD_MM_YYYY;
         }
         aktualizuj_date();
+        // TWORZENIA REKORDU ZASTĘPSTWA
+        function dodaj_rekord(){
+            let klasa = document.getElementById("klasa").value;
+            let godzina_od = document.getElementById("godzina_lekcyjna_od").value;
+            let godzina_do = document.getElementById("godzina_lekcyjna_do").value;
+            let przedmiot = document.getElementById("przedmiot").value;
+            let nauczyciel_za = document.getElementById("zastepstwo_za").value;
+            let nauczyciel_brak = document.getElementById("zastepujacy").value;
+            
+            const lista = [klasa,godzina_od,godzina_do,przedmiot,nauczyciel_za,nauczyciel_brak];
+
+            console.log(lista);
+
+            const rekord = (">"+lista.join(";"));
+            
+            console.log(rekord);
+            // WPISYWANIE REKORDU DO PLIKU
+            
+            //Uh oh problem
+            
+        }
+ 
     </script>
 </body>
 

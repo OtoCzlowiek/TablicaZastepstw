@@ -45,13 +45,15 @@ form{
     border: 3px solid #bbb;
 }
 
-article>form>div {
+form>div {
     display: flex;
     flex-direction: column;
-    
+}
+form>div>label{
+    padding: 3px;
 }
 form>div>input{
-    width: 17vw;
+    width: 18vw;
     height: 3vh;
 }
 
