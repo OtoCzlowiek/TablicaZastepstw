@@ -1,58 +1,99 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="pl">
+
 <head>
-	<title>Dodawanie zastępstw w T19</title>
-	<meta charset="utf-8">
-	<link rel="stylesheet" href="styl.css"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zastępsta Nauczycieli</title>
+    <link rel="stylesheet" href="zastepstwa-dodawanie.css">
 </head>
+
 <body>
+    <header>
+        <div>
+            <img id="logo" src="logo-banner.png" alt="Technikum Nr 19">
+        </div>
+    </header>
+    <header2>
+        <p>Proszę o wprowadzenie danych na temat zastępstw</p>
+    </header2>
+    <article style="flex-direction: column">
+        <h2 id="data">Zastępstwa na dzień:</h2>
+        <form>
+            <div>
+                <label for="klasa">Klasa</label>
+                <input type="text" id="klasa">
+            </div>
+            <div>
+                <label for="gosc">Godziny zwolnione</label>
+                <div style="display: flex; flex-direction: row;">
+                    <a style="padding: 0px 10px;">Od</a>
+                    <select id="godzina_lekcyjna_od" style="width: 5vw;" placeholder="OD">
+                        <option value="0">0 - 07:10</option>
+                        <option value="1">1 - 8:00</option>
+                        <option value="2">2 - 8:50</option>
+                        <option value="3">3 - 9:45</option>
+                        <option value="4">4 - 10:40</option>
+                        <option value="5">5 - 11:35</option>
+                        <option value="6">6 - 12:35</option>
+                        <option value="7">7 - 13:30</option>
+                        <option value="8">8 - 14:25</option>
+                        <option value="9">9 - 15:15</option>
+                        <option value="10">10 - 16:05</option>
+                    </select>
+                    <a style="padding: 0px 10px;">Do</a>
+                    <select id="godzina_lekcyjna_do" style="width: 5vw;" placeholder="OD">
+                        <option value="0">0 - 07:10</option>
+                        <option value="1">1 - 8:00</option>
+                        <option value="2">2 - 8:50</option>
+                        <option value="3">3 - 9:45</option>
+                        <option value="4">4 - 10:40</option>
+                        <option value="5">5 - 11:35</option>
+                        <option value="6">6 - 12:35</option>
+                        <option value="7">7 - 13:30</option>
+                        <option value="8">8 - 14:25</option>
+                        <option value="9">9 - 15:15</option>
+                        <option value="10">10 - 16:05</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <label for="przedmiot">Przedmiot</label>
+                <input type="text" id="przedmiot">
+            </div>
+            <div>
+                <label for="zastepstwo_za">Zastępstwo za</label>
+                <input type="text" id="zastepstwo_za">
+            </div>
+            <div>
+                <label for="zastepujacy">Zastępujący</label>
+                <input type="text" id="zastepujacy">
+            </div>
+        </form>
+        <button onclick="aktualizuj_date()" style="margin-top: 20px; padding:10px;">Dodaj Zastępstwo</button>
+        <p id="status"></p>
+    </article>
+    <section>
+        podgląd
+    </section>
+    <footer>
+        <p id="credits">Stronę opracowali: Jacob & Janusz 3GC</p>
+    </footer>
+    <script>
+        function aktualizuj_date() {
+            const dzisiaj = new Date();
+            let yyyy = dzisiaj.getFullYear();
+            let mm = dzisiaj.getMonth() + 1; // Miesiąc zaczyona się od 0
+            let dd = dzisiaj.getDate();
 
-	<content>
-		<h1>Dodaj zastępstwo na dzisiejszy dzień</h1>
-		
-		<div id="duzy-poj">
-			<div>
-				<label for="klasa">Klasa</label>
-				<input type="text" id="klasa">
-			</div>
-			<div>
-				<label for="godzina">Godzina</label>
-				<input type="text" id="godzina">
-			</div>
-			<div>
-				<label for="przedmiot">Przedmiot</label>
-				<input type="text" id="przedmiot">
-			</div>
-			<div>
-				<label for="za">Nauczyciel zastępowany</label>
-				<input type="text" id="za">
-			</div>
-			<div>
-				<label for="przez">Nauczyciel zastępujący</label>
-				<input type="text" id="przez">
-			</div>
-		</div>
-		
-		<div id="dzisiejszadata">
-			<p>Dziś jest</p>
-			<p id="dziendzis"></p>
-		</div>
-	</content>
+            if (dd < 10) dd = '0' + dd;
+            if (mm < 10) mm = '0' + mm;
 
-	<script>
-	var d = new Date();
-	var d_dt = d.getDay();
-	var d_mc = d.getMonth()+1;
-	var d_rok = d.getYear()+1900;
-	var d_cd = ', '+d.getDate()+'.'+d_mc+'.'+d_rok;
-	
-	if(d_dt == 1){document.getElementById('dziendzis').innerHTML = 'Poniedziałek'+d_cd;}
-	if(d_dt == 2){document.getElementById('dziendzis').innerHTML = 'Wtorek'+d_cd;}
-	if(d_dt == 3){document.getElementById('dziendzis').innerHTML = 'Środa'+d_cd;}
-	if(d_dt == 4){document.getElementById('dziendzis').innerHTML = 'Czwartek'+d_cd;}
-	if(d_dt == 5){document.getElementById('dziendzis').innerHTML = 'Piątek'+d_cd;}
-	if(d_dt == 6){document.getElementById('dziendzis').innerHTML = 'Sobota'+d_cd;}
-	if(d_dt == 7){document.getElementById('dziendzis').innerHTML = 'Niedziela'+d_cd;}
-	</script>
+            var data_DD_MM_YYYY = dd + '.' + mm + '.' + yyyy;
+            document.getElementById("data").innerHTML = "Zastępstwa na dzień: " + data_DD_MM_YYYY;
+        }
+        aktualizuj_date();
+    </script>
 </body>
+
 </html>
