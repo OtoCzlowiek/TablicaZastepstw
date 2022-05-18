@@ -71,10 +71,11 @@
             </div>
         </form>
         <button onclick="dodaj_rekord()" style="margin-top: 20px; padding:10px;">Dodaj Zastępstwo</button>
-        <p id="status"></p>
+        
     </article>
     <section>
         podgląd
+        <p id="status"></p>
     </section>
     <footer>
         <p id="credits">Stronę opracowali: Jacob & Janusz 3GC</p>
@@ -109,6 +110,7 @@
             const rekord = (">"+lista.join(";"));
             
             console.log(rekord);
+            document.getElementById("status").innerHTML += '<br>'+rekord;
             // WPISYWANIE REKORDU DO PLIKU
             
             //Uh oh problem
