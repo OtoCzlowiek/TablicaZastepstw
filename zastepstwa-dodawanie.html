@@ -70,7 +70,7 @@
                 <input type="text" id="zastepujacy">
             </div>
         </form>
-        <button onclick="dodaj_rekord()" style="margin-top: 20px; padding:10px;">Dodaj Zastępstwo</button>
+        <button onclick="dodaj_zastepstwo()" id='dodaj_zastepstwo'>Dodaj Zastępstwo</button>
         
     </article>
     <section>
@@ -95,7 +95,7 @@
         }
         aktualizuj_date();
         // TWORZENIA REKORDU ZASTĘPSTWA
-        function dodaj_rekord(){
+        function dodaj_zastepstwo(){
             let klasa = document.getElementById("klasa").value;
             let godzina_od = document.getElementById("godzina_lekcyjna_od").value;
             let godzina_do = document.getElementById("godzina_lekcyjna_do").value;
