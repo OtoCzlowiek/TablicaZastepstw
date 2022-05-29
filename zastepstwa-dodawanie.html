@@ -19,16 +19,16 @@
     </header2>
     <article style="flex-direction: column">
         <h2 id="data">Zastępstwa na dzień:</h2>
-        <form>
+        <form id='zastepstwa' action="/connect.php" method="post">
             <div style="border-right: 2px dotted #bbb">
                 <label for="klasa">Klasa</label>
-                <input type="text" id="klasa" style="width: 6vw;">
+                <input type="text" id="klasa" style="width: 6vw;" name="klasa">
             </div>
             <div style="border-right: 2px dotted #bbb">
                 <label>Godziny zwolnione</label>
                 <div style="display: flex; flex-direction: row;">
                     <label for="od" style="padding: 0px 10px;">Od</label>
-                    <select id="godzina_lekcyjna_od" style="width: 6vw;">
+                    <select id="godzina_lekcyjna_od" style="width: 6vw;" name="godziny_od">
                         <option id="od" value="0">0 - 07:10</option>
                         <option id="od" value="1">1 - 8:00</option>
                         <option id="od" value="2">2 - 8:50</option>
@@ -42,7 +42,7 @@
                         <option id="od" value="10">10 - 16:05</option>
                     </select>
                     <label for="do" style="padding: 0px 10px;">Do</label>
-                    <select id="godzina_lekcyjna_do" style="width: 6vw;">
+                    <select id="godzina_lekcyjna_do" style="width: 6vw;" name="godziny_do">
                         <option id="do" value="0">0 - 07:10</option>
                         <option id="do" value="1">1 - 8:00</option>
                         <option id="do" value="2">2 - 8:50</option>
@@ -59,18 +59,19 @@
             </div>
             <div style="border-right: 2px dotted #bbb">
                 <label for="przedmiot">Przedmiot</label>
-                <input type="text" id="przedmiot">
+                <input type="text" id="przedmiot" name="przedmiot">
             </div>
             <div style="border-right: 2px dotted #bbb">
                 <label for="zastepstwo_za">Zastępstwo za</label>
-                <input type="text" id="zastepstwo_za">
+                <input type="text" id="zastepstwo_za" name="zastepstwo_za">
             </div>
             <div>
                 <label for="zastepujacy">Zastępujący</label>
-                <input type="text" id="zastepujacy">
+                <input type="text" id="zastepujacy" name="zastepstwo">
             </div>
+            <input id='dodaj_zastepstwo' value='Dodaj Zastępstwo' form="zastepstwa" type="submit">
         </form>
-        <button onclick="dodaj_zastepstwo()" id='dodaj_zastepstwo'>Dodaj Zastępstwo</button>
+        <button id='dodaj_zastepstwo' value='Update' form="zastepstwa" type="submit">Dodaj Zastępstwo</button>
         
     </article>
     <section>
