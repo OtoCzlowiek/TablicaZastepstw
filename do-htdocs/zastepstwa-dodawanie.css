@@ -3,7 +3,7 @@ body {
     flex-wrap: wrap;
     padding: 0px;
     margin: 0px;
-    font-family: Lato, Helvetica, Arial;
+    font-family: "Lato", "Helvetica", "Arial", sans-serif;
 }
 
 header {
@@ -72,6 +72,9 @@ section {
     height: 39.5vh;
     background-color: rgb(239, 239, 239);
     border-top: 0.5vh dashed #bbb;
+    display: flex;
+    justify-content: center;
+    overflow: auto;
 }
 
 footer {
@@ -86,4 +89,17 @@ footer {
 #credits {
     color: rgb(239, 239, 239);
     margin-right: 10px;
+}
+
+th, td, table {
+    border: 1px solid black;
+}
+
+th, td {
+    height: 20px;
+}
+
+table {
+    border-collapse: collapse;
+    margin: 10px 0px 10px 0px;
 }

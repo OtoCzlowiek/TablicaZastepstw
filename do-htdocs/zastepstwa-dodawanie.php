@@ -1,14 +1,15 @@
 <?php
-include "test.php";
+$con = new mysqli('localhost','root','','zastepstwa');
 
 //usuwanie z bazy za pomocą przycisku
-if (isset($_GET['noweid'])){
-    $id=$_GET['noweid'];
-    $delete=mysqli_query($con, "DELETE FROM `zas` WHERE `noweid`='$id'");
-}
+$ni = htmlspecialchars($_GET["id"] ?? "");
+$sql = "DELETE FROM `zas` WHERE `noweid`= ?";
+$stmt = $con->prepare($sql);
+$stmt->bind_param("i", $ni);
+$stmt->execute();
 
 //pobieranie z bazy
-$sel="SELECT * FROM `zas`";
+$sel="SELECT * FROM `zas` ORDER BY `klasa` asc";
 $que=mysqli_query($con, $sel);
 
 ?>
@@ -19,12 +20,8 @@ $que=mysqli_query($con, $sel);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zastępsta Nauczycieli</title>
+    <title>Dodawanie zastępstw nauczycieli</title>
     <link rel="stylesheet" href="zastepstwa-dodawanie.css">
-    <style>
-        th, td, table {border: 1px solid black;}
-        table {border-collapse: collapse;}
-    </style>
 </head>
 
 <body>
@@ -94,8 +91,6 @@ $que=mysqli_query($con, $sel);
         
     </article>
     <section>
-        <p id="status"></p>
-
         <table>
             <tbody>
                 <tr>
@@ -106,10 +101,10 @@ $que=mysqli_query($con, $sel);
                     <th>przedmiot</th>
                     <th>zastępowany</th>
                     <th>zastępujący</th>
-                    <th>Usuwanie</th>
+                    <th>usuwanie</th>
                 </tr>
                 <?php
-                    //wklejanie do tabelki (w 118 link do usuwania z niej)
+                    //wklejanie do tabelki (w 119 link do usuwania z niej)
                     $num = mysqli_num_rows($que);
                     if ($num>0){
                         while ($result=mysqli_fetch_assoc($que)){

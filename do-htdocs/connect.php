@@ -17,7 +17,7 @@
             values(?, ?, ?, ?, ?, ?)");
         $stmt->bind_param("siisss", $klasa, $godziny_od, $godziny_do, $przedmiot, $zastepstwo_za, $zastepstwo);
         $stmt->execute();
-        echo "Dodano zastępstwo!";
+        echo "<h1>Dodano zastępstwo!<h1><a href='../zastepstwa-dodawanie.php'>Dodaj kolejne<a><br><img src='logo-banner.png'>";
         $stmt->close();
         $conn->close();
     }

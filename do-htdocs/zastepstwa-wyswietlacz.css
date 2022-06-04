@@ -1,50 +1,61 @@
-/*Stylowanie obydwu*/
+/*Komputery*/
+@media all and (min-width: 600px){
+	
 body {
 	display: flex;
 	flex-wrap: wrap;
 	margin: 0;
 	padding: 0;
 	justify-content: center;
-}
-
-.bok {
-	width: 15%;
-	height: 100vh;
-	background-color: RGB(240, 255, 240);
-	display: flex;
-	justify-content: center;
-	align-items: center;
+	background-color: #F3F9FC;
 }
 
 .cien {
-	width: 5%;
-	height: 100vh;
-	background-color: RGB(0, 108, 157);
+	width: 85%;
+	height: auto;
+	background-color: #006B9D;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	border-radius: 20px;
 }
 
 content {
-	width: 60%;
+	width: 80%;
 	height: 100vh;
-	background-color: RGB(66, 186, 236);
+	background-color: #83CAE7;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	border-radius: 35px;
+	overflow: auto;
+	/*chowanie scrolla*/
+	-ms-overflow-style: none;  /* Edge */
+	scrollbar-width: none; /*Firefox*/
+}
+/*chowanie scrolla Opera Chrome Safari*/
+content:-webkit-scrollbar {
+	display: none;
 }
 
 th,
-td,
 h1,
-p {
-	font-family: 'Bahnschrift', 'Comic Sans MS', sans-serif;
-}
+p {font-family: 'Inter','-apple-system','BlinkMacSystemFont','Segoe UI','Oxygen','Ubuntu','Roboto','Cantarell','Fira Sans','Droid Sans','Helvetica Neue',sans-serif;}
+
+td {font-family: 'Bahnschrift SemiLight Condensed','Inter','-apple-system','BlinkMacSystemFont','Segoe UI','Oxygen','Ubuntu','Roboto','Cantarell','Fira Sans','Droid Sans','Helvetica Neue',sans-serif;}
 
 th,
 td {
-	border: solid white 4px;
 	padding: 0px 10px 0px 10px;
+	border: solid #F3F9FC 3px;
+}
+
+table {
+	border-collapse: collapse;
+	border-radius: 20px;
+	border-style: hidden;
+	margin-bottom: 10px;
+	box-shadow: 0 0 0 3px #F3F9FC;
 }
 
 img {
@@ -54,28 +65,116 @@ img {
 
 h1 {
 	font-size: 7vh;
+	margin-bottom: 0px;
 }
 
 th,
 td,
 p {
-	font-size: 4vh;
+	font-size: 3vh;
 }
 
 p {
 	margin-top: 0px;
 	font-weight: bold;
 	font-style: italic;
+	color: #463239;
 }
 
-/*Stylowanie strony z formularzem dodawania*/
-#dzisiejszadata {
-	background-color: RGB(240, 255, 240);
-	border: 5px RGB(0, 108, 157) dotted;
-	padding: 10px;
+#credits {
+	font-size: 1em;
+}
 }
 
-#dzisiejszadata p {
-	font-size: 3vh;
-	margin: 2px;
+
+
+
+
+
+/*Telefony*/
+@media all and (max-width: 600px){
+	
+body {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0;
+	padding: 0;
+	justify-content: center;
+	background-color: #F3F9FC;
+}
+
+.cien {
+	width: 95%;
+	height: auto;
+	background-color: #006B9D;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 20px;
+}
+
+content {
+	width: 90%;
+	height: 100vh;
+	background-color: #83CAE7;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border-radius: 15px;
+	overflow: auto;
+	/*chowanie scrolla*/
+	-ms-overflow-style: none;  /* Edge */
+	scrollbar-width: none; /*Firefox*/
+}
+/*chowanie scrolla Opera Chrome Safari*/
+content:-webkit-scrollbar {
+	display: none;
+}
+
+th,
+h1,
+p {font-family: 'Inter','-apple-system','BlinkMacSystemFont','Segoe UI','Oxygen','Ubuntu','Roboto','Cantarell','Fira Sans','Droid Sans','Helvetica Neue',sans-serif;}
+
+td {font-family: 'Bahnschrift SemiLight Condensed','Inter','-apple-system','BlinkMacSystemFont','Segoe UI','Oxygen','Ubuntu','Roboto','Cantarell','Fira Sans','Droid Sans','Helvetica Neue',sans-serif;}
+
+th,
+td {
+	padding: 0px ;
+	border: solid #F3F9FC 3px;
+}
+
+table {
+	border-collapse: collapse;
+	border-radius: 10px;
+	border-style: hidden;
+	margin-bottom: 10px;
+	box-shadow: 0 0 0 3px #F3F9FC;
+}
+
+img {
+	width: 80%;
+	height: auto;
+}
+
+h1 {
+	font-size: 5vh;
+	margin-bottom: 0px;
+}
+
+th,
+td,
+p {
+	font-size: 0.90em;
+}
+
+p {
+	margin-top: 0px;
+	font-weight: bold;
+	font-style: italic;
+	color: #463239;
+}
+
+#credits {
+	font-size: 0.6em;
+}
 }

@@ -1,5 +1,5 @@
 <?php
 
-$con = mysqli_connect('localhost','root','','zastepstwa');
+$con = new mysqli('localhost','root','','zastepstwa');
 
 ?>
