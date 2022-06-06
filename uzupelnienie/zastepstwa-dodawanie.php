@@ -1,0 +1,153 @@
+<?php
+$con = new mysqli('localhost','root','','zastepstwa');
+
+//usuwanie z bazy za pomocą przycisku
+$ni = htmlspecialchars($_GET["id"] ?? "");
+$sql = "DELETE FROM `zas` WHERE `noweid`= ?";
+$stmt = $con->prepare($sql);
+$stmt->bind_param("i", $ni);
+$stmt->execute();
+
+//pobieranie z bazy
+$sel="SELECT * FROM `zas` ORDER BY `klasa` asc";
+$que=mysqli_query($con, $sel);
+
+?>
+
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dodawanie zastępstw nauczycieli</title>
+    <link rel="stylesheet" href="zastepstwa-dodawanie.css">
+</head>
+
+<body>
+    <header>
+        <div>
+            <img id="logo" src="logo-banner.png" alt="Technikum Nr 19">
+        </div>
+    </header>
+    <header2>
+        <p>Proszę o wprowadzenie danych na temat zastępstw</p>
+    </header2>
+    <article style="flex-direction: column">
+        <h2 id="data">Zastępstwa na dzień:</h2>
+        <form id='zastepstwa' action="/connect.php" method="post">
+            <div style="border-right: 2px dotted #bbb">
+                <label for="klasa">Klasa</label>
+                <input type="text" id="klasa" style="width: 6vw;" name="klasa" placeholder="np. '3GC'">
+            </div>
+            <div style="border-right: 2px dotted #bbb">
+                <label>Godzina zwolniona</label>
+                <div style="display: flex; flex-direction: row;">
+                    <select id="godzina_lekcyjna_od" style="width: 6vw;" name="godziny_od">
+                        <option id="od" value="0">0 - 07:10</option>
+                        <option id="od" value="1">1 - 8:00</option>
+                        <option id="od" value="2">2 - 8:50</option>
+                        <option id="od" value="3">3 - 9:45</option>
+                        <option id="od" value="4">4 - 10:40</option>
+                        <option id="od" value="5">5 - 11:35</option>
+                        <option id="od" value="6">6 - 12:35</option>
+                        <option id="od" value="7">7 - 13:30</option>
+                        <option id="od" value="8">8 - 14:25</option>
+                        <option id="od" value="9">9 - 15:15</option>
+                        <option id="od" value="10">10 - 16:05</option>
+                    </select>
+                </div>
+            </div>
+            <div style="border-right: 2px dotted #bbb">
+                <label for="przedmiot">Przedmiot</label>
+                <input type="text" id="przedmiot" name="przedmiot" placeholder="np. 'moduł' albo 'j. polski'">
+            </div>
+            <div style="border-right: 2px dotted #bbb">
+                <label for="zastepstwo_za">Zastępstwo za</label>
+                <input type="text" id="zastepstwo_za" name="zastepstwo_za" placeholder="pierwsza litera imienia i pełne nazwisko">
+            </div>
+            <div>
+                <label for="zastepujacy">Zastępujący</label>
+                <input type="text" id="zastepujacy" name="zastepstwo" placeholder="pierwsza litera imienia i pełne nazwisko">
+            </div>
+            <input id='dodaj_zastepstwo' value='Dodaj Zastępstwo' form="zastepstwa" type="submit">
+        </form>
+        <button id='dodaj_zastepstwo' value='Update' form="zastepstwa" type="submit">Dodaj Zastępstwo</button>
+        
+    </article>
+    <section>
+        <table>
+            <tbody>
+                <tr>
+                    <th>LP</th>
+                    <th>klasa</th>
+                    <th>godzina zwolniona</th>
+                    <th>przedmiot</th>
+                    <th>zastępowany</th>
+                    <th>zastępujący</th>
+                    <th>usuwanie</th>
+                </tr>
+                <?php
+                    //wklejanie do tabelki (w 119 link do usuwania z niej)
+                    $num = mysqli_num_rows($que);
+                    if ($num>0){
+                        while ($result=mysqli_fetch_assoc($que)){
+                            echo "<tr>
+                                    <td>".$result['noweid']."</td>
+                                    <td>".$result['klasa']."</td>
+                                    <td>".$result['godziny_od']."</td>
+                                    <td>".$result['przedmiot']."</td>
+                                    <td>".$result['zastepstwo_za']."</td>
+                                    <td>".$result['zastepstwo']."</td>
+                                    <td><a href='zastepstwa-dodawanie.php?id=".$result['noweid']."'>Usuń</a></td>
+                                </tr>";
+                        }
+                    }
+                ?>
+            </tbody>
+        </table>
+    </section>
+    <footer>
+        <p id="credits">Stronę opracowali: Jacob & Janusz 3GC</p>
+    </footer>
+    <script>
+        function aktualizuj_date() {
+            const dzisiaj = new Date();
+            let yyyy = dzisiaj.getFullYear();
+            let mm = dzisiaj.getMonth() + 1; // Miesiąc zaczyna się od 0
+            let dd = dzisiaj.getDate();
+
+            if (dd < 10) dd = '0' + dd;
+            if (mm < 10) mm = '0' + mm;
+
+            var data_DD_MM_YYYY = dd + '.' + mm + '.' + yyyy;
+            document.getElementById("data").innerHTML = "Zastępstwa na dzień: " + data_DD_MM_YYYY;
+        }
+        aktualizuj_date();
+        // TWORZENIA REKORDU ZASTĘPSTWA
+        function dodaj_zastepstwo(){
+            let klasa = document.getElementById("klasa").value;
+            let godzina_od = document.getElementById("godzina_lekcyjna_od").value;
+            let godzina_do = document.getElementById("godzina_lekcyjna_do").value;
+            let przedmiot = document.getElementById("przedmiot").value;
+            let nauczyciel_za = document.getElementById("zastepstwo_za").value;
+            let nauczyciel_brak = document.getElementById("zastepujacy").value;
+            
+            const lista = [klasa,godzina_od,godzina_do,przedmiot,nauczyciel_za,nauczyciel_brak];
+
+            console.log(lista);
+
+            const rekord = (">"+lista.join(";"));
+            
+            console.log(rekord);
+            document.getElementById("status").innerHTML += '<br>'+rekord;
+            // WPISYWANIE REKORDU DO PLIKU
+            
+            //Uh oh problem
+            
+        }
+ 
+    </script>
+</body>
+
+</html>
